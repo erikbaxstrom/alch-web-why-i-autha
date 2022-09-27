@@ -71,8 +71,20 @@ authForm.addEventListener('submit', async (e) => {
 
     // > Part A:
     //      - get formData object from form
+    const formData = new FormData(authForm);
+    const email = formData.get('email');
+    const password = formData.get('password');
     //      - call "authType.action" passing in the email and password from
     //        the form data and assign to response variable
+
+    // let response = await authType(email, password);
+    let response = await authType.action(email, password);
+
+    // if (something) {
+    //     signInUser(email, pass);
+    // } else {
+    //     signUpUser(email, pass);
+    // }
 
     const error = response.error;
 
@@ -84,5 +96,6 @@ authForm.addEventListener('submit', async (e) => {
     } else {
         // go back to wherever user came from
         // > Part A using "location", replace url with "redirectUrl"
+        console.log('response', response);
     }
 });
